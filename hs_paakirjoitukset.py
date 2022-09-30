@@ -3,9 +3,9 @@ import time
 
 from dotenv import dotenv_values
 
-from telegram import send_message
-from scraper import get_latest_articles
-from article_db import ArticleDB
+from app.telegram import send_message
+from app.scraper import get_latest_articles
+from app.article_db import ArticleDB
 
 config = {
     **dotenv_values('.env'),
