@@ -2,7 +2,7 @@ import os
 
 from dotenv import dotenv_values
 
-from telegram import getMe, sendMessage
+from telegram import get_me, send_message
 from scraper import get_latest_article
 
 config = {
@@ -25,6 +25,6 @@ link = get_latest_article()
 tg_token = config['TELEGRAM_TOKEN']
 tg_chat = config['TELEGRAM_CHAT']
 print()
-print(getMe(tg_token))
+print(get_me(tg_token))
 print()
-print(sendMessage(tg_token, tg_chat, link))
+print(send_message(tg_token, tg_chat, link))
