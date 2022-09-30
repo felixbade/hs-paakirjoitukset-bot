@@ -29,6 +29,7 @@ article_db = ArticleDB()
 
 while True:
     links = get_latest_articles()
+    links.reverse() # oldest first
 
     for link in links:
         if link not in article_db:
