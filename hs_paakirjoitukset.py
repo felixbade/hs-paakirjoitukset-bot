@@ -24,8 +24,6 @@ for mandatory_variable in mandatory_variables:
 
 tg_token = config['TELEGRAM_TOKEN']
 tg_chat = config['TELEGRAM_CHAT']
-print(get_me(tg_token))
-print()
 
 article_db = ArticleDB()
 
@@ -35,9 +33,10 @@ while True:
     for link in links:
         if link not in article_db:
             article_db.add(link)
-            print(send_message(tg_token, tg_chat, link))
+            resp = send_message(tg_token, tg_chat, link)
+            if not resp.get('ok'):
+                print(resp)
             print(f'New article: {link}')
-        print(f'Already posted: {link}')
 
     # The exact part of the minute will drift, but it doesn't matter
     time.sleep(60)
