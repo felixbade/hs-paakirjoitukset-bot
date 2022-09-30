@@ -3,7 +3,7 @@ import time
 
 from dotenv import dotenv_values
 
-from telegram import get_me, send_message
+from telegram import send_message
 from scraper import get_latest_articles
 from article_db import ArticleDB
 
