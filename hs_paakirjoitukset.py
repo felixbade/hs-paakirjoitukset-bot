@@ -4,7 +4,7 @@ import time
 from dotenv import dotenv_values
 
 from telegram import get_me, send_message
-from scraper import get_latest_article
+from scraper import get_latest_articles
 from article_db import ArticleDB
 
 config = {
@@ -30,11 +30,14 @@ print()
 article_db = ArticleDB()
 
 while True:
-    link = get_latest_article()
-    print(link)
-    if link not in article_db:
-        article_db.add(link)
-        print(send_message(tg_token, tg_chat, link))
-    
+    links = get_latest_articles()
+
+    for link in links:
+        if link not in article_db:
+            article_db.add(link)
+            print(send_message(tg_token, tg_chat, link))
+            print(f'New article: {link}')
+        print(f'Already posted: {link}')
+
     # The exact part of the minute will drift, but it doesn't matter
     time.sleep(60)

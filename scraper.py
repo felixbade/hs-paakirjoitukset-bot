@@ -3,10 +3,11 @@ from bs4 import BeautifulSoup
 
 url = 'https://www.hs.fi/paakirjoitukset/'
 
-def get_latest_article():
+def get_latest_articles():
     resp = requests.get(url)
     soup = BeautifulSoup(resp.text, 'html5lib')
 
+    links = []
     articles = soup.find_all('article')
     for article in articles:
         if article.a:
@@ -16,6 +17,6 @@ def get_latest_article():
                 continue
 
             link = f'https://www.hs.fi{link}'
+            links.append(link)
 
-            # Only the first link is needed, the rest are discarded
-            return link
+    return links
