@@ -39,5 +39,5 @@ while True:
                 print(resp)
             print(f'New article: {link}')
 
-    # The exact part of the minute will drift, but it doesn't matter
-    time.sleep(60)
+    # The exact part of the cycle will drift, but it doesn't matter
+    time.sleep(30)
